@@ -27,6 +27,7 @@ class Game():
 
         #IMAGES
         self.background = Image(self.surface, background)
+        self.transform_background = Image(self.surface, background)
         self.main_exit_button= Image(self.surface, main_exit_button)
         self.map = Image(self.surface, map)
         self.main_right_box = Image(self.surface, main_right_box)
@@ -72,7 +73,7 @@ class Game():
                 for event in pygame.event.get():
                     if event.type == MOUSEBUTTONDOWN:
                         if event.button == 1:
-                            self.trash = Trash(self.map, self.background, self.surface, self.main_right_box, self.main_exit_button)
+                            self.trash = Trash(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
                             self.current2 = 1
                         
             #PLANT POT
@@ -133,6 +134,7 @@ class Game():
                     self.current2 = 0
                 self.trash.info_painel(self.xy, event)
                 self.trash.question_painel(self.xy, event)
+                self.trash.test_move(self.xy, event)
 
             if (event.type == KEYDOWN and event.key == K_F4):
                 self.surface = pygame.display.set_mode((1024, 768), pygame.FULLSCREEN)

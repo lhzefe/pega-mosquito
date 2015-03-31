@@ -25,3 +25,9 @@ minor_selection_selected = 'buttons/botao-selecao-menor.png'
 
 #TRASH SCENE
 trash_menu_background = 'menus/trash_menu/fundo-da-cena-do-lixo.png'
+trash_can_spot = 'menus/trash_menu/buraco-lata-de-lixo.png'
+trash_bag_spot = 'menus/trash_menu/buraco-saco-de-lixo.png'
+trash_cover_spot = 'menus/trash_menu/buraco-tampa-da-lata.png'
+trash_can = 'menus/trash_menu/lata-de-lixo.png'
+trash_bag = 'menus/trash_menu/saco-de-lixo.png'
+trash_cover = 'menus/trash_menu/tampa-da-lata.png'
