@@ -22,15 +22,21 @@ class Trash():
         self.minor_selection_selected_question = Image(surface, minor_selection_selected, False, (260,653))
 
         #GENERAL OBJECTS OF GAME
-        self.test_click = []
+        self.test_click = [False, False, False]
         self.count = [False, False, False]
-        self.test_click.append(False)
+        self.block = [False, False, False]
 
         #TRASH CAN OBJECT
         self.trash_can = pygame.image.load(trash_can)
-        self.test_click[0] = False
-
         self.trash_can_spot = Image(surface, trash_can_spot, False, (473,337))
+
+        #TRASH COVER OBJECT
+        self.trash_cover = pygame.image.load(trash_cover)
+        self.trash_cover_spot = Image(surface, trash_cover_spot, False, (480,515))
+
+        #TRASH BAG OBJECT
+        self.trash_bag = pygame.image.load(trash_bag)
+        self.trash_bag_spot = Image(surface, trash_bag_spot, False, (473,180))
 
     def back_main_menu(self, xy, event, image = main_right_box):
         if xy[0] > 67 and xy[0] < 147 and xy[1] > 653 and xy[1] < 734:
@@ -71,31 +77,86 @@ class Trash():
         self.info_button.status = True
         self.question_button.status = True
         self.trash_can_spot.status = True
+        self.trash_cover_spot.status = True
+        self.trash_bag_spot.status = True
 
     def show_scene(self):
         self.transform_background.show()
         self.back_button.show()
         self.info_button.show()
         self.question_button.show()
-        #TRASH_CAN
+        #SPOTS
         self.trash_can_spot.show()
+        self.trash_cover_spot.show()
+        self.trash_bag_spot.show()
+        
+        #TRASH_CAN
         if self.test_click[0] == False:
             self.surface.blit(self.trash_can, (120,180))
-        elif self.test_click[0] == True and self.count[0] == True:
-            self.surface.blit(self.trash_can, (478,343))
-        
+        else:
+            if self.count[0] == True:
+                self.surface.blit(self.trash_can, (478,342))
+        #TRASH_COVER
+        if self.test_click[1] == False:
+            self.surface.blit(self.trash_cover, (127,356))
+        else:
+            if self.count[1] == True:
+                self.surface.blit(self.trash_cover, (484,519))
+        #TRASH_BAG
+        if self.test_click[2] == False:
+            self.surface.blit(self.trash_bag, (116,510))
+        else:
+            if self.count[2] == True:
+                self.surface.blit(self.trash_bag, (476,184))
 
     def test_move(self, xy, event):
         if self.count[0] == False:
             if pygame.mouse.get_pressed()[0]:
-                if xy[0] > 120 and xy[0] < 201 and xy[1] > 180 and xy[1] < 290:
+                if xy[0] > 120 and xy[0] < 201 and xy[1] > 180 and xy[1] < 290 and \
+                self.block[1] == False and self.block[2] == False:
                     self.test_click[0] = True
+                    self.block[0] = True
                 if self.test_click[0] == True and xy[0] > 100 and xy[0] < 600 and xy[1] > 173 and xy[1] < 630:
                     self.surface.blit(self.trash_can, (xy[0]-45,xy[1]-55))
                     for event in pygame.event.get():
                         if event.type == pygame.MOUSEBUTTONUP:
+                            self.block[0] = False
                             if xy[0] > 473 and xy[0] < 568 and xy[1] > 337 and xy[1] < 455:
                                 self.count[0] = True
                             else:
                                 self.test_click[0] = False
                                 self.count[0] = False
+
+        if self.count[1] == False:
+            if pygame.mouse.get_pressed()[0]:
+                if xy[0] > 127 and xy[0] < 200 and xy[1] > 356 and xy[1] < 447 and \
+                self.block[0] == False and self.block[2] == False:
+                    self.test_click[1] = True
+                    self.block[1] = True
+                if self.test_click[1] == True and xy[0] > 100 and xy[0] < 600 and xy[1] > 173 and xy[1] < 630:
+                    self.surface.blit(self.trash_cover, (xy[0]-45,xy[1]-55))
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONUP:
+                            self.block[1] = False
+                            if xy[0] > 480 and xy[0] < 560 and xy[1] > 515 and xy[1] < 600:
+                                self.count[1] = True
+                            else:
+                                self.test_click[1] = False
+                                self.count[1] = False
+
+        if self.count[2] == False:
+            if pygame.mouse.get_pressed()[0]:
+                if xy[0] > 118 and xy[0] < 206 and xy[1] > 501 and xy[1] < 596 and \
+                self.block[0] == False and self.block[1] == False:
+                    self.test_click[2] = True
+                    self.block[2] = True
+                if self.test_click[2] == True and xy[0] > 100 and xy[0] < 600 and xy[1] > 173 and xy[1] < 630:
+                    self.surface.blit(self.trash_bag, (xy[0]-45,xy[1]-55))
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONUP:
+                            self.block[2] = False
+                            if xy[0] > 473 and xy[0] < 572 and xy[1] > 180 and xy[1] < 278:
+                                self.count[2] = True
+                            else:
+                                self.test_click[2] = False
+                                self.count[2] = False

@@ -55,6 +55,74 @@ class Game():
                             except:
                                 pass
 
+    def scenes_active(self, event):
+        if self.current2 == 1:
+            self.trash.open_scene()
+            self.trash.show_scene()
+            if self.trash.back_main_menu(self.xy, event):
+                self.current2 = 0
+            self.trash.info_painel(self.xy, event)
+            self.trash.question_painel(self.xy, event)
+            self.trash.test_move(self.xy, event)
+
+    def scene_selection(self, event):
+        #TRASH
+        if self.current == 0 and self.current2 == 0 and \
+        self.xy[0] > 77 and self.xy[0] < 210 and self.xy[1] > 431 and self.xy[1] < 572:
+            self.selection.show((78, 432))
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        self.trash = Trash(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
+                        self.current2 = 1
+                    
+        #PLANT POT
+        if self.current == 0 and self.current2 == 0 and \
+        self.xy[0] > 309 and self.xy[0] < 375 and self.xy[1] > 425 and self.xy[1] < 548:
+            self.selection_1.show((294, 425))
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    pass
+
+        #WATER BOX
+        if self.current == 0 and self.current2 == 0 and \
+        ((self.xy[0] > 386 and self.xy[0] < 586 and self.xy[1] > 425 and self.xy[1] < 486) or \
+        (self.xy[0] > 390 and self.xy[0] < 555 and self.xy[1] > 484 and self.xy[1] < 509) or \
+        (self.xy[0] > 433 and self.xy[0] < 600 and self.xy[1] > 384 and self.xy[1] < 425) or \
+        (self.xy[0] > 390 and self.xy[0] < 474 and self.xy[1] > 503 and self.xy[1] < 543)):
+            self.selection_2.show((386, 363))
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    pass
+
+        #TIRE
+        if self.current == 0 and self.current2 == 0 and \
+        ((self.xy[0] > 458 and self.xy[0] < 557  and self.xy[1] > 557 and self.xy[1] < 673) or \
+        (self.xy[0] > 554 and self.xy[0] < 621 and self.xy[1] > 530 and self.xy[1] < 681) or \
+        (self.xy[0] > 571 and self.xy[0] < 630 and self.xy[1] > 493 and self.xy[1] < 524)):
+            self.selection_3.show((451, 483))
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    pass
+
+        #SODA CAN
+        if self.current == 0 and self.current2 == 0 and \
+        ((self.xy[0] > 204 and self.xy[0] < 301 and self.xy[1] > 598 and self.xy[1] < 653) or \
+        (self.xy[0] > 257 and self.xy[0] < 274 and self.xy[1] > 572 and self.xy[1] < 598) or \
+        (self.xy[0] > 247 and self.xy[0] < 301 and self.xy[1] > 653 and self.xy[1] < 694)):
+            self.selection_4.show((194, 567))
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    pass
+
+        #BOTTLE
+        if self.current == 0 and self.current2 == 0 and \
+        self.xy[0] > 372 and self.xy[0] < 450 and self.xy[1] > 572 and self.xy[1] < 688:
+            self.selection_5.show((368, 550))
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    pass
+
     def loop(self):
         while self.run:
             for event in pygame.event.get():
@@ -65,76 +133,13 @@ class Game():
             self.main_right_box.show()
             self.main_exit_button.show((689, 654))
             self.map.show()
-
-            #TRASH
-            if self.current == 0 and self.current2 == 0 and \
-            self.xy[0] > 77 and self.xy[0] < 210 and self.xy[1] > 431 and self.xy[1] < 572:
-                self.selection.show((78, 432))
-                for event in pygame.event.get():
-                    if event.type == MOUSEBUTTONDOWN:
-                        if event.button == 1:
-                            self.trash = Trash(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
-                            self.current2 = 1
-                        
-            #PLANT POT
-            if self.current == 0 and self.current2 == 0 and \
-            self.xy[0] > 309 and self.xy[0] < 375 and self.xy[1] > 425 and self.xy[1] < 548:
-                self.selection_1.show((294, 425))
-                for event in pygame.event.get():
-                    if event.type == MOUSEBUTTONDOWN:
-                        pass
-
-            #WATER BOX
-            if self.current == 0 and self.current2 == 0 and \
-            ((self.xy[0] > 386 and self.xy[0] < 586 and self.xy[1] > 425 and self.xy[1] < 486) or \
-            (self.xy[0] > 390 and self.xy[0] < 555 and self.xy[1] > 484 and self.xy[1] < 509) or \
-            (self.xy[0] > 433 and self.xy[0] < 600 and self.xy[1] > 384 and self.xy[1] < 425) or \
-            (self.xy[0] > 390 and self.xy[0] < 474 and self.xy[1] > 503 and self.xy[1] < 543)):
-                self.selection_2.show((386, 363))
-                for event in pygame.event.get():
-                    if event.type == MOUSEBUTTONDOWN:
-                        pass
-
-            #TIRE
-            if self.current == 0 and self.current2 == 0 and \
-            ((self.xy[0] > 458 and self.xy[0] < 557  and self.xy[1] > 557 and self.xy[1] < 673) or \
-            (self.xy[0] > 554 and self.xy[0] < 621 and self.xy[1] > 530 and self.xy[1] < 681) or \
-            (self.xy[0] > 571 and self.xy[0] < 630 and self.xy[1] > 493 and self.xy[1] < 524)):
-                self.selection_3.show((451, 483))
-                for event in pygame.event.get():
-                    if event.type == MOUSEBUTTONDOWN:
-                        pass
-
-            #SODA CAN
-            if self.current == 0 and self.current2 == 0 and \
-            ((self.xy[0] > 204 and self.xy[0] < 301 and self.xy[1] > 598 and self.xy[1] < 653) or \
-            (self.xy[0] > 257 and self.xy[0] < 274 and self.xy[1] > 572 and self.xy[1] < 598) or \
-            (self.xy[0] > 247 and self.xy[0] < 301 and self.xy[1] > 653 and self.xy[1] < 694)):
-                self.selection_4.show((194, 567))
-                for event in pygame.event.get():
-                    if event.type == MOUSEBUTTONDOWN:
-                        pass
-
-            #BOTTLE
-            if self.current == 0 and self.current2 == 0 and \
-            self.xy[0] > 372 and self.xy[0] < 450 and self.xy[1] > 572 and self.xy[1] < 688:
-                self.selection_5.show((368, 550))
-                for event in pygame.event.get():
-                    if event.type == MOUSEBUTTONDOWN:
-                        pass
-
+            #CHOOSE A SCENE
+            self.scene_selection(event)
             #EXIT
             self.back_menu_and_exit(event)
-
             #EVENTS
-            if self.current2 == 1:
-                self.trash.open_scene()
-                self.trash.show_scene()
-                if self.trash.back_main_menu(self.xy, event):
-                    self.current2 = 0
-                self.trash.info_painel(self.xy, event)
-                self.trash.question_painel(self.xy, event)
-                self.trash.test_move(self.xy, event)
+            if self.current2 != 0:
+                self.scenes_active(event)
 
             if (event.type == KEYDOWN and event.key == K_F4):
                 self.surface = pygame.display.set_mode((1024, 768), pygame.FULLSCREEN)
