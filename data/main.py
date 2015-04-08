@@ -19,6 +19,8 @@ class Game():
         self.run = True
 
         self.current = [0, 0]
+        self.score = 0
+        
         self.surface =  pygame.display.set_mode((1024, 768))
         pygame.display.set_caption('Turma do Combate: Pega Mosquito')
 
@@ -52,6 +54,11 @@ class Game():
                             except:
                                 pass
 
+    def score_text(self):
+        font=pygame.font.SysFont("Comic Sans MS", 28)
+        scoretext=font.render("Pontos: "+str(self.score), 1,(255,255,255))
+        self.surface.blit(scoretext, (708, 57))
+
     def scenes_active(self, event):
         if self.current[1] == 1:
             self.trash.open_scene()
@@ -60,7 +67,8 @@ class Game():
                 self.current[1] = 0
             self.trash.general.info_painel(self.xy, event)
             self.trash.general.question_painel(self.xy, event)
-            self.trash.test_move(self.xy, event)
+            if self.trash.test_move(self.xy, event):
+                self.score+= 100
 
     def scene_selection(self, event):
         #TRASH
@@ -130,6 +138,7 @@ class Game():
             self.main_right_box.show()
             self.main_exit_button.show((689, 654))
             self.map.show()
+            self.score_text()
             #CHOOSE A SCENE
             self.scene_selection(event)
             #EXIT
@@ -143,8 +152,3 @@ class Game():
             elif (event.type == KEYDOWN and event.key == K_F3):
                 self.surface = pygame.display.set_mode((1024, 768))
             pygame.display.update()
-
-game = Game()
-game.loop()
-pygame.quit()
-exit()
