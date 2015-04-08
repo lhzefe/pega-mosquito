@@ -31,6 +31,9 @@ trash_cover_spot = './menus/trash_menu/buraco-tampa-da-lata.png'
 trash_can = './menus/trash_menu/lata-de-lixo.png'
 trash_bag = './menus/trash_menu/saco-de-lixo.png'
 trash_cover = './menus/trash_menu/tampa-da-lata.png'
+info_trash = './menus/trash_menu/info-lixo.png'
+question_trash = './menus/trash_menu/duvida-lixo.png'
+trash_movie = './menus/trash_menu/video.mpg'
 
 #BALLOONS
 info_balloon = './balloons/balao-informacao.png'

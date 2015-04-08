@@ -65,8 +65,8 @@ class Game():
             self.trash.show_scene()
             if self.trash.general.back_main_menu(self.xy, event):
                 self.current[1] = 0
-            self.trash.general.info_painel(self.xy, event)
-            self.trash.general.question_painel(self.xy, event)
+            self.trash.general.info_painel(self.xy, event, self.current)
+            self.trash.general.question_painel(self.xy, event, self.current)
             if self.trash.test_move(self.xy, event):
                 self.score+= 100
 
