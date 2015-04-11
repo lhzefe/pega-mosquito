@@ -13,13 +13,16 @@ water_box_selected = './menus/first_menu/caixa-d-agua.png'
 tire_selected = './menus/first_menu/selecao-do-pneu.png'
 soda_can_selected = './menus/first_menu/selecao-da-lata.png'
 bottle_selected = './menus/first_menu/selecao-da-garrafa.png'
+lock = './menus/first_menu/cadeado.png'
 
 #SCENE BUTTONS
 main_exit_button = './buttons/botao-sair-principal-jogo.png'
 question_button = './buttons/botao-duvida.png'
 info_button = './buttons/botao-informacao.png'
 back_button = './buttons/botao-voltar.png'
-
+play_button = './buttons/botao-play.png'
+pause_button = './buttons/botao-pause.png'
+stop_button = './buttons/botao-stop.png'
 main_exit_button_selected = './buttons/botao-sair-principal-jogo-selecionado.png'
 minor_selection_selected = './buttons/botao-selecao-menor.png'
 
@@ -34,6 +37,7 @@ trash_cover = './menus/trash_menu/tampa-da-lata.png'
 info_trash = './menus/trash_menu/info-lixo.png'
 question_trash = './menus/trash_menu/duvida-lixo.png'
 trash_movie = './menus/trash_menu/video.mpg'
+movie_background = './menus/trash_menu/fundo-do-video.png'
 
 #BALLOONS
 info_balloon = './balloons/balao-informacao.png'

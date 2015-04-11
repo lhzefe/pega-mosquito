@@ -8,7 +8,7 @@ except:
     exit(0)
 
 class General():
-    def __init__(self, map, transform_background, surface, menu, exit_button):        
+    def __init__(self, map, transform_background, surface, menu, exit_button, selected_movie):        
         self.transform_background = transform_background
         self.surface = surface
         self.map = map
@@ -17,6 +17,7 @@ class General():
         self.minor_selection_selected = []
         self.balloon = []
         self.button = []
+        self.selected_movie = selected_movie
 
         self.button.append( Image(surface, back_button, False, (67,653)) )
         self.button.append( Image(surface, info_button, False, (165,653)) )
@@ -31,6 +32,18 @@ class General():
         self.trash_text = []
         self.trash_text.append( Image(surface, info_trash, False, (177, 413)) )
         self.trash_text.append( Image(surface, question_trash, False, (277, 430)) )
+
+        #MOVIES STATUS
+        self.movie_status = []
+        self.movie_status.append( Image(surface, stop_button, False, (98,496)) )
+        self.movie_status.append( Image(surface, pause_button, False, (219,496)) )
+        self.movie_status.append( Image(surface, play_button, False, (338,496)) )
+
+        #MOVIES VIDEOS
+        self.movie_background = Image(surface, movie_background, False, (56,185))
+        self.movie = pygame.movie.Movie(self.selected_movie)
+        self.movie_screen = pygame.Surface(self.movie.get_size()).convert()
+        self.movie.set_display(self.movie_screen)
 
     def buttons_general(self):
         self.menu.status = False
@@ -92,3 +105,19 @@ class General():
                             if current[1] == 1:
                                 self.trash_text[1].status = True
                                 self.trash_text[0].status = False
+
+    def congratulations_movie(self, xy, event):
+        self.movie_background.status = True
+        for movie_status in self.movie_status:
+            movie_status.status = True
+        if pygame.mouse.get_pressed()[0]:
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONUP:
+                    if xy[1] > 496 and xy[1] < 577:
+                        if  xy[0] > 98 and xy[0] < 177:
+                            self.movie.rewind()
+                            self.movie.stop()
+                        if  xy[0] > 218 and xy[0] < 298:
+                            self.movie.pause()
+                        if  xy[0] > 338 and xy[0] < 418:
+                            self.movie.play()

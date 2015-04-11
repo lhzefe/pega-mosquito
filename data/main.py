@@ -20,7 +20,8 @@ class Game():
 
         self.current = [0, 0]
         self.score = 0
-        
+        self.level_completed = [False]*6
+
         self.surface =  pygame.display.set_mode((1024, 768))
         pygame.display.set_caption('Turma do Combate: Pega Mosquito')
 
@@ -30,7 +31,15 @@ class Game():
         self.main_exit_button= Image(self.surface, main_exit_button)
         self.map = Image(self.surface, map)
         self.main_right_box = Image(self.surface, main_right_box)
-        
+
+        #LOCKS
+        self.lock = []
+        self.lock.append( Image(self.surface, lock, True, (324, 460)) )
+        self.lock.append( Image(self.surface, lock, True, (450, 430)) )
+        self.lock.append( Image(self.surface, lock, True, (535, 570)) )
+        self.lock.append( Image(self.surface, lock, True, (225, 590)) )
+        self.lock.append( Image(self.surface, lock, True, (390, 590)) )
+
         #SELECTIONS
         self.selection = []
         self.selection.append( Image(self.surface, trash_selected) )
@@ -65,10 +74,16 @@ class Game():
             self.trash.show_scene()
             if self.trash.general.back_main_menu(self.xy, event):
                 self.current[1] = 0
+                self.level_completed[0] = False
+                self.trash.general.movie.stop()
             self.trash.general.info_painel(self.xy, event, self.current)
             self.trash.general.question_painel(self.xy, event, self.current)
             if self.trash.test_move(self.xy, event):
                 self.score+= 100
+                self.level_completed[0] = True
+                self.lock[0].status = False
+            if self.level_completed[0]:
+                self.trash.general.congratulations_movie(self.xy, event)
 
     def scene_selection(self, event):
         #TRASH
@@ -82,15 +97,15 @@ class Game():
                         self.current[1] = 1
                     
         #PLANT POT
-        if self.current[0] == 0 and self.current[1] == 0 and \
+        if self.current[0] == 0 and self.current[1] == 0 and self.lock[0].status == False and \
         self.xy[0] > 309 and self.xy[0] < 375 and self.xy[1] > 425 and self.xy[1] < 548:
             self.selection[1].show((294, 425))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
-                    pass
+                    print "DESTRAVADO"
 
         #WATER BOX
-        if self.current[0] == 0 and self.current[1] == 0 and \
+        if self.current[0] == 0 and self.current[1] == 0 and self.lock[1].status == False and \
         ((self.xy[0] > 386 and self.xy[0] < 586 and self.xy[1] > 425 and self.xy[1] < 486) or \
         (self.xy[0] > 390 and self.xy[0] < 555 and self.xy[1] > 484 and self.xy[1] < 509) or \
         (self.xy[0] > 433 and self.xy[0] < 600 and self.xy[1] > 384 and self.xy[1] < 425) or \
@@ -101,7 +116,7 @@ class Game():
                     pass
 
         #TIRE
-        if self.current[0] == 0 and self.current[1] == 0 and \
+        if self.current[0] == 0 and self.current[1] == 0 and self.lock[2].status == False and \
         ((self.xy[0] > 458 and self.xy[0] < 557  and self.xy[1] > 557 and self.xy[1] < 673) or \
         (self.xy[0] > 554 and self.xy[0] < 621 and self.xy[1] > 530 and self.xy[1] < 681) or \
         (self.xy[0] > 571 and self.xy[0] < 630 and self.xy[1] > 493 and self.xy[1] < 524)):
@@ -111,7 +126,7 @@ class Game():
                     pass
 
         #SODA CAN
-        if self.current[0] == 0 and self.current[1] == 0 and \
+        if self.current[0] == 0 and self.current[1] == 0 and self.lock[3].status == False and \
         ((self.xy[0] > 204 and self.xy[0] < 301 and self.xy[1] > 598 and self.xy[1] < 653) or \
         (self.xy[0] > 257 and self.xy[0] < 274 and self.xy[1] > 572 and self.xy[1] < 598) or \
         (self.xy[0] > 247 and self.xy[0] < 301 and self.xy[1] > 653 and self.xy[1] < 694)):
@@ -121,7 +136,7 @@ class Game():
                     pass
 
         #BOTTLE
-        if self.current[0] == 0 and self.current[1] == 0 and \
+        if self.current[0] == 0 and self.current[1] == 0 and self.lock[4].status == False and \
         self.xy[0] > 372 and self.xy[0] < 450 and self.xy[1] > 572 and self.xy[1] < 688:
             self.selection[5].show((368, 550))
             for event in pygame.event.get():
@@ -139,6 +154,8 @@ class Game():
             self.main_exit_button.show((689, 654))
             self.map.show()
             self.score_text()
+            for lock in self.lock:
+                lock.show()
             #CHOOSE A SCENE
             self.scene_selection(event)
             #EXIT

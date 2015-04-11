@@ -11,7 +11,8 @@ class Trash():
         self.map = map
         self.menu = menu        
         self.exit_button = exit_button
-        self.general = General(self.map, self.transform_background, self.surface, self.menu, self.exit_button)
+        self.selected_movie = trash_movie
+        self.general = General(self.map, self.transform_background, self.surface, self.menu, self.exit_button, self.selected_movie)
         
         #GENERAL OBJECTS OF GAME
         self.test_click = [False, False, False]
@@ -32,9 +33,6 @@ class Trash():
 
         #NEED SOLVE THE SOUNDS PROBLEM
         #pygame.mixer.quit()
-        self.movie = pygame.movie.Movie(trash_movie)
-        self.movie_screen = pygame.Surface(self.movie.get_size()).convert()
-        self.movie.set_display(self.movie_screen)
 
     def open_scene(self):
         self.general.buttons_general()
@@ -68,8 +66,12 @@ class Trash():
         else:
             if self.count[2] == True:
                 self.surface.blit(self.trash_bag, (476,184))
+        self.general.movie_background.show()
+        if self.general.movie_background.status:
+            self.surface.blit(self.general.movie_screen,(98,210))
+        for movie_status in self.general.movie_status:
+            movie_status.show()
         #BALLOONS
-        self.congratulations_movie()
         for balloon in self.general.balloon:
             balloon.show()
         for text in self.general.trash_text:
@@ -148,8 +150,3 @@ class Trash():
 
             if  self.count == [True, True, True]:
                 return True
-
-    def congratulations_movie(self):
-        if self.count == [True, True, True]:
-            self.movie.play()
-            self.surface.blit(self.movie_screen,(79,190))
