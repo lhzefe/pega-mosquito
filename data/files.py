@@ -25,6 +25,7 @@ pause_button = './buttons/botao-pause.png'
 stop_button = './buttons/botao-stop.png'
 main_exit_button_selected = './buttons/botao-sair-principal-jogo-selecionado.png'
 minor_selection_selected = './buttons/botao-selecao-menor.png'
+movie_background = './buttons/fundo-do-video.png'
 
 #TRASH SCENE
 trash_menu_background = './menus/trash_menu/fundo-da-cena-do-lixo.png'
@@ -37,7 +38,6 @@ trash_cover = './menus/trash_menu/tampa-da-lata.png'
 info_trash = './menus/trash_menu/info-lixo.png'
 question_trash = './menus/trash_menu/duvida-lixo.png'
 trash_movie = './menus/trash_menu/video.mpg'
-movie_background = './menus/trash_menu/fundo-do-video.png'
 
 #BALLOONS
 info_balloon = './balloons/balao-informacao.png'
