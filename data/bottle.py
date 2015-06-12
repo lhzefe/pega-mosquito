@@ -4,14 +4,14 @@ import pygame
 from general import General
 from pygame.locals import *
 
-class PlantPot():
+class Bottle():
     def __init__(self, map, transform_background, surface, menu, exit_button):        
         self.transform_background = transform_background
         self.surface = surface
         self.map = map
         self.menu = menu        
         self.exit_button = exit_button
-        self.selected_movie = pot_movie
+        self.selected_movie = bottle_movie
         self.general = General(self.map, self.transform_background, self.surface, self.menu, self.exit_button, self.selected_movie)
         
         #GENERAL OBJECTS OF GAME
@@ -19,50 +19,50 @@ class PlantPot():
         self.count = [False, False, False]
         self.block = [False, False, False]
 
-        self.pot_sand = pygame.image.load(pot_sand)
-        self.pot_sand_spot = Image(surface, pot_sand_spot, False, (473,337))
+        self.bottle_bottle_box = pygame.image.load(bottle_bottle_box)
+        self.bottle_bottle_box_spot = Image(surface, bottle_bottle_box_spot, False, (473,337))
 
-        self.pot_shovel = pygame.image.load(pot_shovel)
-        self.pot_shovel_spot = Image(surface, pot_shovel_spot, False, (480,515))
+        self.bottle_bottle = pygame.image.load(bottle_bottle)
+        self.bottle_bottle_spot = Image(surface, bottle_bottle_spot, False, (480,515))
 
-        self.pot_plant_pot = pygame.image.load(pot_plant_pot)
-        self.pot_plant_pot_spot = Image(surface, pot_plant_pot_spot, False, (473,180))
+        self.bottle_recycle_glass = pygame.image.load(bottle_recycle_glass)
+        self.bottle_recycle_glass_spot = Image(surface, bottle_recycle_glass_spot, False, (473,180))
 
         #NEED SOLVE THE SOUNDS PROBLEM
         #pygame.mixer.quit()
 
     def open_scene(self):
         self.general.buttons_general()
-        self.transform_background.switch_image(pot_menu_background)
-        self.pot_sand_spot.status = True
-        self.pot_shovel_spot.status = True
-        self.pot_plant_pot_spot.status = True
+        self.transform_background.switch_image(bottle_menu_background)
+        self.bottle_bottle_box_spot.status = True
+        self.bottle_bottle_spot.status = True
+        self.bottle_recycle_glass_spot.status = True
 
     def show_scene(self):
         self.transform_background.show()
         self.general.buttons_general_show()
         #SPOTS
-        self.pot_sand_spot.show()
-        self.pot_shovel_spot.show()
-        self.pot_plant_pot_spot.show()
-        #pot_sand
+        self.bottle_bottle_box_spot.show()
+        self.bottle_bottle_spot.show()
+        self.bottle_recycle_glass_spot.show()
+        #bottle_bottle_box
         if self.test_click[0] == False:
-            self.surface.blit(self.pot_sand, (120,180))
+            self.surface.blit(self.bottle_bottle_box, (120,180))
         else:
             if self.count[0] == True:
-                self.surface.blit(self.pot_sand, (478,342))
-        #pot_shovel
+                self.surface.blit(self.bottle_bottle_box, (478,342))
+        #bottle_bottle
         if self.test_click[1] == False:
-            self.surface.blit(self.pot_shovel, (127,356))
+            self.surface.blit(self.bottle_bottle, (127,356))
         else:
             if self.count[1] == True:
-                self.surface.blit(self.pot_shovel, (484,519))
-        #pot_plant_pot
+                self.surface.blit(self.bottle_bottle, (484,519))
+        #bottle_recycle_glass
         if self.test_click[2] == False:
-            self.surface.blit(self.pot_plant_pot, (116,510))
+            self.surface.blit(self.bottle_recycle_glass, (116,510))
         else:
             if self.count[2] == True:
-                self.surface.blit(self.pot_plant_pot, (476,184))
+                self.surface.blit(self.bottle_recycle_glass, (476,184))
         self.general.movie_background.show()
         if self.general.movie_background.status:
             self.surface.blit(self.general.movie_screen,(98,210))
@@ -71,7 +71,7 @@ class PlantPot():
         #BALLOONS
         for balloon in self.general.balloon:
             balloon.show()
-        for text in self.general.pot_text:
+        for text in self.general.bottle_text:
             text.show()
 
     def test_move(self, xy, event):
@@ -84,7 +84,7 @@ class PlantPot():
                         self.block[0] = True
                     if self.test_click[0] == True:
                         if xy[0] > 77 and xy[0] < 605 and xy[1] > 154 and xy[1] < 630:
-                            self.surface.blit(self.pot_sand, (xy[0]-45,xy[1]-55))
+                            self.surface.blit(self.bottle_bottle_box, (xy[0]-45,xy[1]-55))
                             for event in pygame.event.get():
                                 if event.type == pygame.MOUSEBUTTONUP:
                                     self.block[0] = False
@@ -107,7 +107,7 @@ class PlantPot():
                         self.block[1] = True
                     if self.test_click[1] == True:
                         if xy[0] > 77 and xy[0] < 605 and xy[1] > 154 and xy[1] < 630:
-                            self.surface.blit(self.pot_shovel, (xy[0]-45,xy[1]-55))
+                            self.surface.blit(self.bottle_bottle, (xy[0]-45,xy[1]-55))
                             for event in pygame.event.get():
                                 if event.type == pygame.MOUSEBUTTONUP:
                                     self.block[1] = False
@@ -130,7 +130,7 @@ class PlantPot():
                         self.block[2] = True
                     if self.test_click[2] == True:
                         if xy[0] > 77 and xy[0] < 605 and xy[1] > 154 and xy[1] < 630:
-                            self.surface.blit(self.pot_plant_pot, (xy[0]-45,xy[1]-55))
+                            self.surface.blit(self.bottle_recycle_glass, (xy[0]-45,xy[1]-55))
                             for event in pygame.event.get():
                                 if event.type == pygame.MOUSEBUTTONUP:
                                     self.block[2] = False

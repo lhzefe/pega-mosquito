@@ -8,6 +8,10 @@ try:
     from image import *
     from trash import Trash
     from plant_pot import PlantPot
+    from water_box import WaterBox
+    from tire import Tire
+    from soda_can import SodaCan
+    from bottle import Bottle
 except:
     print 'Error importing modules required.'
     exit(0)
@@ -85,7 +89,7 @@ class Game():
                 self.lock[0].status = False
             if self.level_completed[0]:
                 self.trash.general.congratulations_movie(self.xy, event)
-        if self.current[1] == 2:
+        elif self.current[1] == 2:
             self.plant_pot.open_scene()
             self.plant_pot.show_scene()
             if self.plant_pot.general.back_main_menu(self.xy, event):
@@ -100,6 +104,65 @@ class Game():
                 self.lock[1].status = False
             if self.level_completed[1]:
                 self.plant_pot.general.congratulations_movie(self.xy, event)
+        elif self.current[1] == 3:
+            self.water_box.open_scene()
+            self.water_box.show_scene()
+            if self.water_box.general.back_main_menu(self.xy, event):
+                self.current[1] = 0
+                self.level_completed[2] = False
+                self.water_box.general.movie.stop()
+            self.water_box.general.info_painel(self.xy, event, self.current)
+            self.water_box.general.question_painel(self.xy, event, self.current)
+            if self.water_box.test_move(self.xy, event):
+                self.score+= 100
+                self.level_completed[2] = True
+                self.lock[2].status = False
+            if self.level_completed[2]:
+                self.water_box.general.congratulations_movie(self.xy, event)
+        elif self.current[1] == 4:
+            self.tire.open_scene()
+            self.tire.show_scene()
+            if self.tire.general.back_main_menu(self.xy, event):
+                self.current[1] = 0
+                self.level_completed[3] = False
+                self.tire.general.movie.stop()
+            self.tire.general.info_painel(self.xy, event, self.current)
+            self.tire.general.question_painel(self.xy, event, self.current)
+            if self.tire.test_move(self.xy, event):
+                self.score+= 100
+                self.level_completed[3] = True
+                self.lock[3].status = False
+            if self.level_completed[3]:
+                self.tire.general.congratulations_movie(self.xy, event)
+        elif self.current[1] == 5:
+            self.soda_can.open_scene()
+            self.soda_can.show_scene()
+            if self.soda_can.general.back_main_menu(self.xy, event):
+                self.current[1] = 0
+                self.level_completed[4] = False
+                self.soda_can.general.movie.stop()
+            self.soda_can.general.info_painel(self.xy, event, self.current)
+            self.soda_can.general.question_painel(self.xy, event, self.current)
+            if self.soda_can.test_move(self.xy, event):
+                self.score+= 100
+                self.level_completed[4] = True
+                self.lock[4].status = False
+            if self.level_completed[4]:
+                self.soda_can.general.congratulations_movie(self.xy, event)
+        elif self.current[1] == 6:
+            self.bottle.open_scene()
+            self.bottle.show_scene()
+            if self.bottle.general.back_main_menu(self.xy, event):
+                self.current[1] = 0
+                self.level_completed[5] = False
+                self.bottle.general.movie.stop()
+            self.bottle.general.info_painel(self.xy, event, self.current)
+            self.bottle.general.question_painel(self.xy, event, self.current)
+            if self.bottle.test_move(self.xy, event):
+                self.score+= 100
+                self.level_completed[5] = True
+            if self.level_completed[5]:
+                self.bottle.general.congratulations_movie(self.xy, event)
 
     def scene_selection(self, event):
         #TRASH
@@ -131,7 +194,9 @@ class Game():
             self.selection[2].show((386, 363))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
-                    pass
+                    if event.button == 1:
+                        self.water_box = WaterBox(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
+                        self.current[1] = 3
 
         #TIRE
         if self.current[0] == 0 and self.current[1] == 0 and self.lock[2].status == False and \
@@ -141,7 +206,9 @@ class Game():
             self.selection[3].show((451, 483))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
-                    pass
+                    if event.button == 1:
+                        self.tire = Tire(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
+                        self.current[1] = 4
 
         #SODA CAN
         if self.current[0] == 0 and self.current[1] == 0 and self.lock[3].status == False and \
@@ -151,7 +218,9 @@ class Game():
             self.selection[4].show((194, 567))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
-                    pass
+                    if event.button == 1:
+                        self.soda_can = SodaCan(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
+                        self.current[1] = 5
 
         #BOTTLE
         if self.current[0] == 0 and self.current[1] == 0 and self.lock[4].status == False and \
@@ -159,7 +228,9 @@ class Game():
             self.selection[5].show((368, 550))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
-                    pass
+                    if event.button == 1:
+                        self.bottle = Bottle(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
+                        self.current[1] = 6
 
     def loop(self):
         while self.run:

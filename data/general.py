@@ -38,6 +38,26 @@ class General():
         self.pot_text.append( Image(surface, info_trash, False, (177, 413)) )
         self.pot_text.append( Image(surface, question_pot, False, (277, 430)) )
 
+        #WATER BOX TEXT
+        self.water_box_text = []
+        self.water_box_text.append( Image(surface, info_trash, False, (177, 413)) )
+        self.water_box_text.append( Image(surface, question_water_box, False, (277, 430)) )
+
+        #TIRE TEXT
+        self.tire_text = []
+        self.tire_text.append( Image(surface, info_trash, False, (177, 413)) )
+        self.tire_text.append( Image(surface, question_tire, False, (277, 430)) )
+
+        #BOTTLE TEXT
+        self.bottle_text = []
+        self.bottle_text.append( Image(surface, info_trash, False, (177, 413)) )
+        self.bottle_text.append( Image(surface, question_bottle, False, (277, 430)) )
+
+        #SODA CAN TEXT
+        self.soda_can_text = []
+        self.soda_can_text.append( Image(surface, info_trash, False, (177, 413)) )
+        self.soda_can_text.append( Image(surface, question_soda_can, False, (277, 430)) )
+
         #MOVIES STATUS
         self.movie_status = []
         self.movie_status.append( Image(surface, stop_button, False, (98,496)) )
@@ -87,10 +107,10 @@ class General():
                             if current[1] > 0 and current[1] < 7:
                                 self.trash_text[0].status = False
                                 self.pot_text[0].status = False
-                                #self.trash_text[0].status = False
-                                #self.trash_text[0].status = False
-                                #self.trash_text[0].status = False
-                                #self.trash_text[0].status = False
+                                self.water_box_text[0].status = False
+                                self.tire_text[0].status = False
+                                self.bottle_text[0].status = False
+                                self.soda_can_text[0].status = False
                         else:
                             self.balloon[0].status = True
                             self.balloon[1].status = False
@@ -100,6 +120,18 @@ class General():
                             elif current[1] == 2:
                                 self.pot_text[0].status = True
                                 self.pot_text[1].status = False
+                            elif current[1] == 3:
+                                self.water_box_text[0].status = True
+                                self.water_box_text[1].status = False
+                            elif current[1] == 4:
+                                self.tire_text[0].status = True
+                                self.tire_text[1].status = False
+                            elif current[1] == 5:
+                                self.soda_can_text[0].status = True
+                                self.soda_can_text[1].status = False
+                            elif current[1] == 6:
+                                self.bottle_text[0].status = True
+                                self.bottle_text[1].status = False
 
     def question_painel(self, xy, event, current):
         if xy[0] > 260 and xy[0] < 342 and xy[1] > 653 and xy[1] < 734:
@@ -113,10 +145,10 @@ class General():
                             if current[1] > 0 and current[1] < 7:
                                 self.trash_text[1].status = False
                                 self.pot_text[1].status = False
-                                #self.trash_text[1].status = False
-                                #self.trash_text[1].status = False
-                                #self.trash_text[1].status = False
-                                #self.trash_text[1].status = False
+                                self.water_box_text[1].status = False
+                                self.tire_text[1].status = False
+                                self.bottle_text[1].status = False
+                                self.soda_can_text[1].status = False
                         else:
                             self.balloon[1].status = True
                             self.balloon[0].status = False
@@ -126,6 +158,18 @@ class General():
                             elif current[1] == 2:
                                 self.pot_text[1].status = True
                                 self.pot_text[0].status = False
+                            elif current[1] == 3:
+                                self.water_box_text[1].status = True
+                                self.water_box_text[0].status = False
+                            elif current[1] == 4:
+                                self.tire_text[1].status = True
+                                self.tire_text[0].status = False
+                            elif current[1] == 5:
+                                self.soda_can_text[1].status = True
+                                self.soda_can_text[0].status = False
+                            elif current[1] == 6:
+                                self.bottle_text[1].status = True
+                                self.bottle_text[0].status = False
 
     def congratulations_movie(self, xy, event):
         self.movie_background.status = True

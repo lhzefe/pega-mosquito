@@ -50,7 +50,49 @@ pot_plant_pot = './menus/plant_pot_menu/vaso-de-planta.png'
 question_pot = './menus/plant_pot_menu/duvida-vaso.png'
 pot_movie = './menus/plant_pot_menu/video.mpg'
 
-#COLOCAR TODAS AS FIGURAS
+#WATER BOX SCENE
+water_box_menu_background = './menus/water_box_menu/fundo-da-cena-do-caixa-d-agua.png'
+water_box_box_spot = './menus/water_box_menu/buraco-caixa.png'
+water_box_brush_spot = './menus/water_box_menu/buraco-escova.png'
+water_box_cover_spot = './menus/water_box_menu/buraco-tampa.png'
+water_box_box = './menus/water_box_menu/caixa.png'
+water_box_brush = './menus/water_box_menu/escova.png'
+water_box_cover = './menus/water_box_menu/tampa.png'
+question_water_box = './menus/water_box_menu/duvida-caixa.png'
+water_box_movie = './menus/water_box_menu/video.mpg'
+
+#TIRE SCENE
+tire_menu_background = './menus/tire_menu/fundo-da-cena-do-pneu.png'
+tire_tires_with_water_spot = './menus/tire_menu/buraco-pneu-com-agua.png'
+tire_tire_spot = './menus/tire_menu/buraco-pneus.png'
+tire_cover_spot = './menus/tire_menu/buraco-tenda.png'
+tire_tires_with_water = './menus/tire_menu/pneu-com-agua.png'
+tire_tire = './menus/tire_menu/pneus.png'
+tire_cover = './menus/tire_menu/tenda.png'
+question_tire = './menus/tire_menu/duvida-pneu.png'
+tire_movie = './menus/tire_menu/video.mpg'
+
+#BOTTLE SCENE
+bottle_menu_background = './menus/bottle_menu/fundo-da-cena-da-garrafa.png'
+bottle_bottle_box_spot = './menus/bottle_menu/buraco-caixa-de-garrafas.png'
+bottle_bottle_spot = './menus/bottle_menu/buraco-garrafa.png'
+bottle_recycle_glass_spot = './menus/bottle_menu/buraco-reciclavel-vidro.png'
+bottle_bottle_box = './menus/bottle_menu/caixa-de-garrafas.png'
+bottle_bottle = './menus/bottle_menu/garrafa.png'
+bottle_recycle_glass = './menus/bottle_menu/reciclavel-vidro.png'
+question_bottle = './menus/bottle_menu/duvida-garrafa.png'
+bottle_movie = './menus/bottle_menu/video.mpg'
+
+#SODA CAN SCENE
+soda_can_menu_background = './menus/soda_can_menu/fundo-da-cena-da-lata.png'
+soda_can_can_spot = './menus/soda_can_menu/buraco-latinha.png'
+soda_can_recycle_metal_spot = './menus/soda_can_menu/buraco-reciclavel-metal.png'
+soda_can_bag_spot = './menus/soda_can_menu/buraco-sacola.png'
+soda_can_can = './menus/soda_can_menu/latinha.png'
+soda_can_recycle_metal = './menus/soda_can_menu/reciclavel-metal.png'
+soda_can_bag = './menus/soda_can_menu/sacola.png'
+question_soda_can = './menus/soda_can_menu/duvida-latinhas.png'
+soda_can_movie = './menus/soda_can_menu/video.mpg'
 
 #BALLOONS
 info_balloon = './balloons/balao-informacao.png'
