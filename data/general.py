@@ -33,6 +33,11 @@ class General():
         self.trash_text.append( Image(surface, info_trash, False, (177, 413)) )
         self.trash_text.append( Image(surface, question_trash, False, (277, 430)) )
 
+        #PLANT POT TEXT
+        self.pot_text = []
+        self.pot_text.append( Image(surface, info_trash, False, (177, 413)) )
+        self.pot_text.append( Image(surface, question_pot, False, (277, 430)) )
+
         #MOVIES STATUS
         self.movie_status = []
         self.movie_status.append( Image(surface, stop_button, False, (98,496)) )
@@ -81,12 +86,20 @@ class General():
                             self.balloon[0].status = False
                             if current[1] > 0 and current[1] < 7:
                                 self.trash_text[0].status = False
+                                self.pot_text[0].status = False
+                                #self.trash_text[0].status = False
+                                #self.trash_text[0].status = False
+                                #self.trash_text[0].status = False
+                                #self.trash_text[0].status = False
                         else:
                             self.balloon[0].status = True
                             self.balloon[1].status = False
                             if current[1] == 1:
                                 self.trash_text[0].status = True
                                 self.trash_text[1].status = False
+                            elif current[1] == 2:
+                                self.pot_text[0].status = True
+                                self.pot_text[1].status = False
 
     def question_painel(self, xy, event, current):
         if xy[0] > 260 and xy[0] < 342 and xy[1] > 653 and xy[1] < 734:
@@ -99,12 +112,20 @@ class General():
                             self.balloon[1].status = False
                             if current[1] > 0 and current[1] < 7:
                                 self.trash_text[1].status = False
+                                self.pot_text[1].status = False
+                                #self.trash_text[1].status = False
+                                #self.trash_text[1].status = False
+                                #self.trash_text[1].status = False
+                                #self.trash_text[1].status = False
                         else:
                             self.balloon[1].status = True
                             self.balloon[0].status = False
                             if current[1] == 1:
                                 self.trash_text[1].status = True
                                 self.trash_text[0].status = False
+                            elif current[1] == 2:
+                                self.pot_text[1].status = True
+                                self.pot_text[0].status = False
 
     def congratulations_movie(self, xy, event):
         self.movie_background.status = True

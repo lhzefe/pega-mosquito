@@ -39,6 +39,19 @@ info_trash = './menus/trash_menu/info-lixo.png'
 question_trash = './menus/trash_menu/duvida-lixo.png'
 trash_movie = './menus/trash_menu/video.mpg'
 
+#PLANT POT SCENE
+pot_menu_background = './menus/plant_pot_menu/fundo-da-cena-do-vaso.png'
+pot_sand_spot = './menus/plant_pot_menu/buraco-areia.png'
+pot_shovel_spot = './menus/plant_pot_menu/buraco-pa.png'
+pot_plant_pot_spot = './menus/plant_pot_menu/buraco-vaso-de-planta.png'
+pot_sand = './menus/plant_pot_menu/areia.png'
+pot_shovel = './menus/plant_pot_menu/pa.png'
+pot_plant_pot = './menus/plant_pot_menu/vaso-de-planta.png'
+question_pot = './menus/plant_pot_menu/duvida-vaso.png'
+pot_movie = './menus/plant_pot_menu/video.mpg'
+
+#COLOCAR TODAS AS FIGURAS
+
 #BALLOONS
 info_balloon = './balloons/balao-informacao.png'
 question_balloon = './balloons/balao-duvida.png'

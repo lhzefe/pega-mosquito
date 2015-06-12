@@ -7,6 +7,7 @@ try:
     from files import *
     from image import *
     from trash import Trash
+    from plant_pot import PlantPot
 except:
     print 'Error importing modules required.'
     exit(0)
@@ -84,6 +85,21 @@ class Game():
                 self.lock[0].status = False
             if self.level_completed[0]:
                 self.trash.general.congratulations_movie(self.xy, event)
+        if self.current[1] == 2:
+            self.plant_pot.open_scene()
+            self.plant_pot.show_scene()
+            if self.plant_pot.general.back_main_menu(self.xy, event):
+                self.current[1] = 0
+                self.level_completed[1] = False
+                self.plant_pot.general.movie.stop()
+            self.plant_pot.general.info_painel(self.xy, event, self.current)
+            self.plant_pot.general.question_painel(self.xy, event, self.current)
+            if self.plant_pot.test_move(self.xy, event):
+                self.score+= 100
+                self.level_completed[1] = True
+                self.lock[1].status = False
+            if self.level_completed[1]:
+                self.plant_pot.general.congratulations_movie(self.xy, event)
 
     def scene_selection(self, event):
         #TRASH
@@ -102,7 +118,9 @@ class Game():
             self.selection[1].show((294, 425))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
-                    print "DESTRAVADO"
+                    if event.button == 1:
+                        self.plant_pot = PlantPot(self.map, self.transform_background, self.surface, self.main_right_box, self.main_exit_button)
+                        self.current[1] = 2
 
         #WATER BOX
         if self.current[0] == 0 and self.current[1] == 0 and self.lock[1].status == False and \
