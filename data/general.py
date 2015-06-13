@@ -1,7 +1,7 @@
 try:
     from files import *
     from image import *
-    import pygame
+    import pygame, pygame.mixer
     from pygame.locals import *
 except:
     print 'Error importing modules required.'
@@ -66,9 +66,11 @@ class General():
 
         #MOVIES VIDEOS
         self.movie_background = Image(surface, movie_background, False, (56,185))
+        #pygame.mixer.quit()
         self.movie = pygame.movie.Movie(self.selected_movie)
         self.movie_screen = pygame.Surface(self.movie.get_size()).convert()
         self.movie.set_display(self.movie_screen)
+
 
     def buttons_general(self):
         self.menu.status = False

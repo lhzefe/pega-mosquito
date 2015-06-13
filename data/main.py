@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 
 try:
-    import pygame
+    import pygame, pygame.mixer
     from pygame.locals import *
     from files import *
     from image import *
@@ -15,8 +15,6 @@ try:
 except:
     print 'Error importing modules required.'
     exit(0)
-
-
 
 class Game():
     def __init__(self):
@@ -44,6 +42,10 @@ class Game():
         self.lock.append( Image(self.surface, lock, True, (535, 570)) )
         self.lock.append( Image(self.surface, lock, True, (225, 590)) )
         self.lock.append( Image(self.surface, lock, True, (390, 590)) )
+
+        #MUSIC
+        self.game_music = pygame.mixer.Sound(game_music)
+        self.game_music.play(-1)
 
         #SELECTIONS
         self.selection = []

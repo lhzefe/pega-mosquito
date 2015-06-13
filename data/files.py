@@ -15,6 +15,9 @@ soda_can_selected = './menus/first_menu/selecao-da-lata.png'
 bottle_selected = './menus/first_menu/selecao-da-garrafa.png'
 lock = './menus/first_menu/cadeado.png'
 
+#SOUNDS AND MUSIC
+game_music = './menus/first_menu/som.wav'
+
 #SCENE BUTTONS
 main_exit_button = './buttons/botao-sair-principal-jogo.png'
 question_button = './buttons/botao-duvida.png'
